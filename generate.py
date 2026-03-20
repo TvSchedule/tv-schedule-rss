@@ -29,4 +29,4 @@ if __name__ == "__main__":
     print("Output path resolved to:", output_path)
 
     generate_ical(output_path)
-    print("Script finished.") 
+    print("Script finished.")
