@@ -34,3 +34,4 @@ if __name__ == "__main__":
     generate_ical(output_path)
 
     print("=== generate.py finished ===")
+　
