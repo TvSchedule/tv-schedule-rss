@@ -19,7 +19,8 @@ jobs:
           python-version: '3.11'
 
       - name: Run generator
-        run: |
+   run: |
+          cd $GITHUB_WORKSPACE
           python generate.py
 
       - name: Commit and push
