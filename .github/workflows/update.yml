@@ -22,7 +22,7 @@ jobs:
         run: |
           python generate.py
 
-   - name: Debug file tree
+      - name: Debug file tree
         run: |
           echo "=== Current directory ==="
           pwd
