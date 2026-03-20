@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          path: tv-schedule-rss
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -20,24 +22,18 @@ jobs:
 
       - name: Run generator
         run: |
+          cd tv-schedule-rss
           python generate.py
 
       - name: Debug file tree
         run: |
-          echo "=== Current directory ==="
-          pwd
+          cd tv-schedule-rss
           echo "=== File tree ==="
-          ls -R .
-
-      - name: Show files for debugging
-        run: |
-          echo "=== Current directory ==="
-          pwd
-          echo "=== List ==="
           ls -R .
 
       - name: Commit and push
         run: |
+          cd tv-schedule-rss
           git config user.name "TvSchedule"
           git config user.email "example@example.com"
           git add rss
