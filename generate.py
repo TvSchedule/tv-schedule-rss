@@ -8,8 +8,12 @@ def generate_ical(path: str):
     start = now.replace(hour=21, minute=0, second=0, microsecond=0)
     end = start + timedelta(hours=1)
 
+    # 毎回内容が変わるように DTSTAMP を追加
+    dtstamp = now.strftime('%Y%m%dT%H%M%S')
+
     ical = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//TV Schedule//JP//\n"
     ical += "BEGIN:VEVENT\n"
+    ical += f"DTSTAMP:{dtstamp}\n"
     ical += f"DTSTART:{start.strftime('%Y%m%dT%H%M%S')}\n"
     ical += f"DTEND:{end.strftime('%Y%m%dT%H%M%S')}\n"
     ical += "SUMMARY:ダミー番組\n"
