@@ -22,6 +22,13 @@ jobs:
         run: |
           python generate.py
 
+      - name: Debug file tree
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== File tree ==="
+          ls -R .
+
       - name: Show files for debugging
         run: |
           echo "=== Current directory ==="
