@@ -1,6 +1,9 @@
 from datetime import datetime, timedelta
 import os
 
+print("=== generate.py started ===")
+print("Current working directory:", os.getcwd())
+
 def generate_ical(path: str):
     print("generate_ical called. Writing to:", path)
 
@@ -18,15 +21,16 @@ def generate_ical(path: str):
     with open(path, "w", encoding="utf-8") as f:
         f.write(ical)
 
-if __name__ == "__main__":
-    print("Script started. Current directory:", os.getcwd())
+    print("File written successfully.")
 
+if __name__ == "__main__":
     rss_dir = os.path.join(os.getcwd(), "rss")
     print("Ensuring rss directory exists:", rss_dir)
     os.makedirs(rss_dir, exist_ok=True)
 
     output_path = os.path.join(rss_dir, "animalplanet.ics")
-    print("Output path resolved to:", output_path)
+    print("Output path:", output_path)
 
     generate_ical(output_path)
-    print("Script finished.")
+
+    print("=== generate.py finished ===")
