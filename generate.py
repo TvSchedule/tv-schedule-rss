@@ -17,5 +17,9 @@ def generate_ical(path: str):
         f.write(ical)
 
 if __name__ == "__main__":
-    os.makedirs("rss", exist_ok=True)
-    generate_ical("rss/animalplanet.ics")
+    base = os.getcwd()  # GitHub Actions の作業ディレクトリ
+    rss_dir = os.path.join(base, "rss")
+    os.makedirs(rss_dir, exist_ok=True)
+
+    output_path = os.path.join(rss_dir, "animalplanet.ics")
+    generate_ical(output_path)
