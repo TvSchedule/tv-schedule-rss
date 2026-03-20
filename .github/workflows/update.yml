@@ -13,7 +13,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: tv-schedule-rss
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,24 +23,20 @@ jobs:
 
       - name: Run generator
         run: |
-          cd tv-schedule-rss
           python generate.py
 
       - name: Debug file tree
         run: |
-          cd tv-schedule-rss
           ls -R .
 
       - name: Show git status
         run: |
-          cd tv-schedule-rss
           git status
 
       - name: Commit and push
         run: |
-          cd tv-schedule-rss
           git config user.name "TvSchedule"
           git config user.email "example@example.com"
           git add rss/*.ics
           git commit -m "Update schedules" || echo "No changes"
-          git push || true
+          git push
