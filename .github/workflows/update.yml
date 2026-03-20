@@ -37,6 +37,7 @@ jobs:
         run: |
           git config user.name "TvSchedule"
           git config user.email "example@example.com"
-          git add rss
+          git add rss/*.ics
           git commit -m "Update schedules" || echo "No changes"
           git push || true
+
