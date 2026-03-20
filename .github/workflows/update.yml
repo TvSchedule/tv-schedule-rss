@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          path: .
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,13 +20,19 @@ jobs:
 
       - name: Run generator
         run: |
-          cd $GITHUB_WORKSPACE
           python generate.py
+
+      - name: Show files for debugging
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== List ==="
+          ls -R .
 
       - name: Commit and push
         run: |
           git config user.name "TvSchedule"
           git config user.email "example@example.com"
-          git add rss/*.ics
+          git add rss
           git commit -m "Update schedules" || echo "No changes"
           git push || true
